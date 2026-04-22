@@ -249,33 +249,16 @@ st.markdown(
     }}
 
     /* Keep the View Statistics button outlined on all screen sizes */
-    [data-testid="stSidebar"] button[data-testid="baseButton-secondary"] {{
+    /* Target all sidebar buttons with secondary styling */
+    [data-testid="stSidebar"] .stButton > button {{
         border: 3px solid {HONEY} !important;
-        outline: 2px solid {HONEY} !important;
-        outline-offset: 2px !important;
+        box-shadow: 0 0 0 2px {COFFEE_BROWN}, 0 0 0 5px {HONEY}, 0 3px 10px rgba(0,0,0,0.25) !important;
         border-radius: 12px !important;
-        background-color: {COFFEE_BROWN} !important;
-        color: {WHITE} !important;
-        font-weight: 700 !important;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.22) !important;
     }}
 
-    section[data-testid="stSidebar"] button[data-testid="baseButton-secondary"] {{
-        border: 3px solid {HONEY} !important;
-        outline: 2px solid {HONEY} !important;
-        outline-offset: 2px !important;
-        border-radius: 12px !important;
-        background-color: {COFFEE_BROWN} !important;
-        color: {WHITE} !important;
-        font-weight: 700 !important;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.22) !important;
-    }}
-
-    [data-testid="stSidebar"] button[data-testid="baseButton-secondary"]:hover,
-    section[data-testid="stSidebar"] button[data-testid="baseButton-secondary"]:hover {{
+    [data-testid="stSidebar"] .stButton > button:hover {{
         background-color: {TERRACOTTA} !important;
-        border-color: {HONEY} !important;
-        outline-color: {HONEY} !important;
+        box-shadow: 0 0 0 2px {COFFEE_BROWN}, 0 0 0 5px {HONEY}, 0 4px 14px rgba(0,0,0,0.3) !important;
     }}
     
     [data-testid="stSidebar"] .stAlert {{
@@ -546,7 +529,7 @@ st.markdown(
     f"""
     <div class="coffee-header">
         <h1>☕ Brew & Ask</h1>
-        <p>Your friendly Ghana Elections & Budget Assistant</p>
+        <p style="color: {CREAM}; text-shadow: 0 3px 6px rgba(0, 0, 0, 0.5) !important; margin: 0.5rem 0 0 0; font-size: 1rem; font-weight: 500;">Your friendly Ghana Elections & Budget Assistant</p>
     </div>
     """,
     unsafe_allow_html=True
