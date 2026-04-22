@@ -207,11 +207,15 @@ st.markdown(
         color: {CREAM};
     }}
 
-    [data-testid="stSidebar"] .stMarkdown h2,
-    [data-testid="stSidebar"] .stMarkdown h3,
-    [data-testid="stSidebar"] .stMarkdown h4,
+    [data-testid="stSidebar"] h1,
+    [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3,
+    [data-testid="stSidebar"] h4,
+    [data-testid="stSidebar"] h5,
+    [data-testid="stSidebar"] h6,
     [data-testid="stSidebar"] p,
     [data-testid="stSidebar"] li,
+    [data-testid="stSidebar"] span,
     [data-testid="stSidebar"] label,
     [data-testid="stSidebar"] .stCaption,
     [data-testid="stSidebar"] [data-testid="stCaptionContainer"] {{
@@ -225,10 +229,12 @@ st.markdown(
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     }}
 
-    [data-testid="stSidebar"] .stButton > button {{
+    [data-testid="stSidebar"] button {{
         background-color: {COFFEE_BROWN} !important;
         color: {WHITE} !important;
-        border: 2px solid {HONEY} !important;
+        border: 3px solid {HONEY} !important;
+        outline: 2px solid rgba(255, 248, 231, 0.65) !important;
+        outline-offset: 1px !important;
         border-radius: 12px !important;
         font-weight: 700 !important;
         min-height: 44px !important;
@@ -236,7 +242,7 @@ st.markdown(
         box-shadow: 0 2px 8px rgba(0,0,0,0.18);
     }}
 
-    [data-testid="stSidebar"] .stButton > button:hover {{
+    [data-testid="stSidebar"] button:hover {{
         background-color: {TERRACOTTA} !important;
         border-color: {HONEY} !important;
     }}
@@ -369,11 +375,15 @@ st.markdown(
             opacity: 1 !important;
         }}
 
-        [data-testid="stSidebar"] .stMarkdown h2,
-        [data-testid="stSidebar"] .stMarkdown h3,
-        [data-testid="stSidebar"] .stMarkdown h4,
-        [data-testid="stSidebar"] .stMarkdown p,
-        [data-testid="stSidebar"] .stMarkdown li,
+        [data-testid="stSidebar"] h1,
+        [data-testid="stSidebar"] h2,
+        [data-testid="stSidebar"] h3,
+        [data-testid="stSidebar"] h4,
+        [data-testid="stSidebar"] h5,
+        [data-testid="stSidebar"] h6,
+        [data-testid="stSidebar"] p,
+        [data-testid="stSidebar"] li,
+        [data-testid="stSidebar"] span,
         [data-testid="stSidebar"] .stCaption,
         [data-testid="stSidebar"] [data-testid="stCaptionContainer"] p {{
             color: {CREAM} !important;
@@ -403,11 +413,11 @@ st.markdown(
             min-height: 40px !important;
         }}
 
-        [data-testid="stSidebar"] .stButton > button {{
+        [data-testid="stSidebar"] button {{
             font-size: 0.9rem !important;
             padding: 0.55rem 0.8rem !important;
             min-height: 44px !important;
-            border: 2px solid {HONEY} !important;
+            border: 3px solid {HONEY} !important;
             border-radius: 12px !important;
         }}
         
@@ -442,7 +452,7 @@ st.markdown(
             padding: 0.2rem 0.3rem !important;
         }}
 
-        [data-testid="stSidebar"] .stButton > button {{
+        [data-testid="stSidebar"] button {{
             font-size: 0.85rem !important;
             padding: 0.5rem 0.7rem !important;
             min-height: 42px !important;
@@ -511,22 +521,31 @@ st.markdown(
 
 # Sidebar
 with st.sidebar:
-    st.caption("Made with ❤️ by Emmanuella Uwudia")
-    st.caption("Index:10012200008 | CS4241 - Introduction to AI")
+    st.markdown(
+        f"""
+        <div style=\"color:{WHITE}; font-weight:700; font-size:0.9rem; line-height:1.35; text-shadow:0 1px 2px rgba(0,0,0,0.35); margin-bottom:0.2rem;\">
+            Made with ❤️ by Emmanuella Uwudia
+        </div>
+        <div style=\"color:{CREAM}; font-weight:600; font-size:0.82rem; line-height:1.35; text-shadow:0 1px 2px rgba(0,0,0,0.25);\">
+            Index:10012200008 | CS4241 - Introduction to AI
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
-    st.markdown("## What's on the menu?")
+    st.markdown(f"<h3 style='color:{CREAM}; margin: 0.75rem 0 0.4rem 0;'>What's on the menu?</h3>", unsafe_allow_html=True)
     st.info("**Election Results**\n\nHistorical voting data from past Ghana elections")
     st.info("**2025 Budget**\n\nOfficial government budget document")
     
     st.markdown("---")
-    st.markdown("## ⚙️ Settings")
+    st.markdown(f"<h3 style='color:{CREAM}; margin: 0.75rem 0 0.4rem 0;'>⚙️ Settings</h3>", unsafe_allow_html=True)
     
     k_value = st.slider("How many sources to check?", 3, 10, 5)
     use_expansion = st.checkbox("🔍 Smart Search", value=True)
     show_debug = st.checkbox("📋 Show my work", value=True)
     
     st.markdown("---")
-    st.markdown("## 🛠️ Behind the counter")
+    st.markdown(f"<h3 style='color:{CREAM}; margin: 0.75rem 0 0.4rem 0;'>🛠️ Behind the counter</h3>", unsafe_allow_html=True)
     st.markdown("""
     - Custom RAG engine
     - Smart search
@@ -535,9 +554,9 @@ with st.sidebar:
     """)
     
     st.markdown("---")
-    st.markdown("## 📝 Feedback")
+    st.markdown(f"<h3 style='color:{CREAM}; margin: 0.75rem 0 0.4rem 0;'>📝 Feedback</h3>", unsafe_allow_html=True)
     
-    if st.button("📊 View Statistics", key="view_stats", use_container_width=True):
+    if st.button("📊 View Statistics", key="view_stats", use_container_width=True, type="secondary"):
         stats = st.session_state.feedback_loop.get_statistics()
         
         if stats and stats.get("total_feedback", 0) > 0:
