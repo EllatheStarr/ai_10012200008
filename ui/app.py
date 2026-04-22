@@ -73,6 +73,7 @@ WHITE = "#FFFFFF"
 st.markdown(
     f"""
     <style>
+    /* Main background - warm cream */
     .main {{
         background-color: {CREAM};
     }}
@@ -81,6 +82,7 @@ st.markdown(
         background-color: {CREAM};
     }}
     
+    /* Header - coffee shop sign style */
     .coffee-header {{
         background: linear-gradient(135deg, {COFFEE_BROWN} 0%, {DARK_BROWN} 100%);
         padding: 1.5rem;
@@ -105,6 +107,7 @@ st.markdown(
         font-size: 1rem;
     }}
     
+    /* User message - warm and friendly */
     .user-message {{
         background: linear-gradient(135deg, {TERRACOTTA} 0%, {HONEY} 100%);
         color: {WHITE};
@@ -118,6 +121,7 @@ st.markdown(
         font-weight: 500;
     }}
     
+    /* Bot message - like a coffee chat */
     .bot-message {{
         background-color: {WHITE};
         color: {DARK_BROWN};
@@ -132,6 +136,7 @@ st.markdown(
         line-height: 1.5;
     }}
     
+    /* Source card - like a receipt/note */
     .source-card {{
         background-color: {WHITE};
         border-left: 4px solid {TERRACOTTA};
@@ -142,6 +147,7 @@ st.markdown(
         font-size: 0.85rem;
     }}
     
+    /* Score badges - friendly colors */
     .score-high {{ 
         background-color: #D4E6D4;
         color: #2E7D32;
@@ -166,6 +172,7 @@ st.markdown(
         font-weight: bold;
     }}
     
+    /* Button styling - like coffee shop buttons */
     .stButton > button {{
         background-color: {COFFEE_BROWN};
         color: {WHITE};
@@ -182,6 +189,7 @@ st.markdown(
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }}
+
     
     /* View Statistics button styling */
     .stButton button[key="view_stats"] {{
@@ -196,56 +204,59 @@ st.markdown(
         transition: all 0.3s ease !important;
     }}
     
+    
     .stButton button[key="view_stats"]:hover {{
         background-color: {TERRACOTTA} !important;
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }}
     
+    /* Sidebar styling */
     [data-testid="stSidebar"] {{
         background-color: {COFFEE_BROWN};
     }}
     
-    /* Sidebar text colors */
+    /* Make all sidebar text white/cream */
     [data-testid="stSidebar"] .stMarkdown,
     [data-testid="stSidebar"] p,
-    [data-testid="stSidebar"] li,
-    [data-testid="stSidebar"] .stMarkdown li,
-    [data-testid="stSidebar"] .stMarkdown p {{
+    [data-testid="stSidebar"] div:not(.stAlert) {{
         color: {CREAM} !important;
     }}
     
-    /* Sidebar headers */
-    [data-testid="stSidebar"] h2,
-    [data-testid="stSidebar"] h3,
+    /* Make sidebar headers gold and visible */
     [data-testid="stSidebar"] .stMarkdown h2,
-    [data-testid="stSidebar"] .stMarkdown h3 {{
+    [data-testid="stSidebar"] .stMarkdown h3,
+    [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3 {{
         color: {HONEY} !important;
         font-weight: bold !important;
+        font-size: 1.1rem !important;
         margin-top: 15px !important;
         margin-bottom: 10px !important;
+        display: block !important;
+        visibility: visible !important;
     }}
     
-    /* Sidebar info boxes */
+    /* Fix info boxes in sidebar */
     [data-testid="stSidebar"] .stAlert {{
         background-color: {DARK_BROWN} !important;
-        border-left-color: {HONEY} !important;
+        border-left: 3px solid {HONEY} !important;
         color: {CREAM} !important;
     }}
     
-    /* Sidebar divider */
-    [data-testid="stSidebar"] hr {{
-        border-color: {LATTE} !important;
-        margin: 15px 0 !important;
-    }}
-    
-    /* Sidebar slider and checkbox labels */
+    /* Make slider and checkbox labels white */
     [data-testid="stSidebar"] .stSlider label,
     [data-testid="stSidebar"] .stCheckbox label {{
         color: {CREAM} !important;
     }}
     
-    /* Sidebar caption */
+    /* Make sidebar divider visible */
+    [data-testid="stSidebar"] hr {{
+        border-color: {LATTE} !important;
+        margin: 15px 0 !important;
+    }}
+    
+    /* Make sidebar caption/footer visible */
     [data-testid="stSidebar"] .stCaption,
     [data-testid="stSidebar"] caption {{
         color: {LATTE} !important;
@@ -350,6 +361,7 @@ st.markdown(
         margin: 5px 0;
     }}
     
+    /* Mobile Responsive Fixes */
     @media (max-width: 768px) {{
         .coffee-header {{
             padding: 0.8rem !important;
@@ -483,31 +495,22 @@ st.markdown(
 
 # Sidebar
 with st.sidebar:
-    # Sidebar header with better contrast
-    st.markdown(
-        f"""
-        <div style="text-align: center; margin-bottom: 20px; padding: 10px; background-color: {DARK_BROWN}; border-radius: 12px;">
-            <div style="font-size: 2rem;">☕</div>
-            <div style="font-weight: bold; color: {HONEY}; font-size: 1.1rem;">Brew & Ask</div>
-            <div style="font-size: 0.7rem; color: {LATTE};">RAG Chatbot</div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    st.markdown("### ☕ Brew & Ask")
+    st.markdown("---")
     
-    st.markdown("## 📚 What's on the menu?")
-    st.info("**📊 Election Results**\n\nHistorical voting data from past Ghana elections")
-    st.info("**📄 2025 Budget**\n\nOfficial government budget document")
+    st.markdown("### 📚 What's on the menu?")
+    st.info("📊 **Election Results**\n\nHistorical voting data from past Ghana elections")
+    st.info("📄 **2025 Budget**\n\nOfficial government budget document")
     
     st.markdown("---")
-    st.markdown("## ⚙️ Settings")
+    st.markdown("### ⚙️ Settings")
     
-    k_value = st.slider("How many sources to check?", 3, 10, 5)
-    use_expansion = st.checkbox("🔍 Smart Search", value=True)
-    show_debug = st.checkbox("📋 Show my work", value=True)
+    k_value = st.slider("Sources to check", 3, 10, 5)
+    use_expansion = st.checkbox("Smart Search", value=True)
+    show_debug = st.checkbox("Show my work", value=True)
     
     st.markdown("---")
-    st.markdown("## 🛠️ Behind the counter")
+    st.markdown("### 🛠️ Behind the counter")
     st.markdown("""
     - Custom RAG engine
     - Smart search
@@ -516,9 +519,9 @@ with st.sidebar:
     """)
     
     st.markdown("---")
-    st.markdown("## 📝 Feedback")
+    st.markdown("### 📝 Feedback")
     
-    # View Statistics button - Styled button
+    # View Statistics button
     if st.button("📊 View Statistics", key="view_stats", use_container_width=True):
         stats = st.session_state.feedback_loop.get_statistics()
         
@@ -591,7 +594,7 @@ with st.sidebar:
     
     st.markdown("---")
     
-    # Footer with better contrast
+    # Footer
     st.markdown(
         f"""
         <div style="text-align: center; padding: 10px 0; border-top: 1px solid {LATTE}; margin-top: 10px;">
