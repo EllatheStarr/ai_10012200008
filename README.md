@@ -67,6 +67,7 @@ The system is built entirely from scratch without LangChain, LlamaIndex, or any 
 ---
 
 ## Project Structure
+```text
 ai_10012200008/
 │
 ├── data/
@@ -124,6 +125,7 @@ ai_10012200008/
 ├── .gitignore
 ├── main.py
 └── README.md
+```
 
 
 ---
@@ -157,6 +159,8 @@ python main.py --prepare
 
 # 6. Launch the application
 python main.py --ui
+```
+
 The app will open at http://localhost:8501
 
 ## Sample Questions
@@ -190,7 +194,7 @@ The app will open at http://localhost:8501
 
 | Item | Link |
 |------|------|
-| GitHub Repository | https://github.com/EllatheStarr/ai_10012200008 |
-| Deployed Application | https://ai-10012200008.streamlit.app |
+| GitHub Repository | [github.com/EllatheStarr/ai_10012200008](https://github.com/EllatheStarr/ai_10012200008) |
+| Deployed Application | [ai-10012200008.streamlit.app](https://ai-10012200008.streamlit.app) |
 
 Made with ❤️ by Emmanuella Uwudia
