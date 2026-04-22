@@ -103,6 +103,7 @@ st.markdown(
         color: {LATTE};
         margin: 0.5rem 0 0 0;
         font-size: 1rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     }}
     
     .user-message {{
@@ -246,6 +247,36 @@ st.markdown(
         background-color: {TERRACOTTA} !important;
         border-color: {HONEY} !important;
     }}
+
+    /* Keep the View Statistics button outlined on all screen sizes */
+    [data-testid="stSidebar"] button[data-testid="baseButton-secondary"] {{
+        border: 3px solid {HONEY} !important;
+        outline: 2px solid {HONEY} !important;
+        outline-offset: 2px !important;
+        border-radius: 12px !important;
+        background-color: {COFFEE_BROWN} !important;
+        color: {WHITE} !important;
+        font-weight: 700 !important;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.22) !important;
+    }}
+
+    section[data-testid="stSidebar"] button[data-testid="baseButton-secondary"] {{
+        border: 3px solid {HONEY} !important;
+        outline: 2px solid {HONEY} !important;
+        outline-offset: 2px !important;
+        border-radius: 12px !important;
+        background-color: {COFFEE_BROWN} !important;
+        color: {WHITE} !important;
+        font-weight: 700 !important;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.22) !important;
+    }}
+
+    [data-testid="stSidebar"] button[data-testid="baseButton-secondary"]:hover,
+    section[data-testid="stSidebar"] button[data-testid="baseButton-secondary"]:hover {{
+        background-color: {TERRACOTTA} !important;
+        border-color: {HONEY} !important;
+        outline-color: {HONEY} !important;
+    }}
     
     [data-testid="stSidebar"] .stAlert {{
         background-color: {DARK_BROWN};
@@ -362,7 +393,9 @@ st.markdown(
         }}
         
         .coffee-header p {{
-            font-size: 0.7rem !important;
+            font-size: 0.75rem !important;
+            color: {WHITE} !important;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5) !important;
         }}
         
         .stMarkdown h2,
