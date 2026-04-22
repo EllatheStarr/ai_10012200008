@@ -183,6 +183,7 @@ st.markdown(
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }}
     
+    /* View Statistics button styling */
     .stButton button[key="view_stats"] {{
         background-color: {COFFEE_BROWN} !important;
         color: {WHITE} !important;
@@ -191,6 +192,8 @@ st.markdown(
         font-weight: bold !important;
         padding: 0.6rem 1.2rem !important;
         width: 100% !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
     }}
     
     .stButton button[key="view_stats"]:hover {{
@@ -203,13 +206,49 @@ st.markdown(
         background-color: {COFFEE_BROWN};
     }}
     
-    [data-testid="stSidebar"] * {{
-        color: {CREAM};
+    /* Sidebar text colors */
+    [data-testid="stSidebar"] .stMarkdown,
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] li,
+    [data-testid="stSidebar"] .stMarkdown li,
+    [data-testid="stSidebar"] .stMarkdown p {{
+        color: {CREAM} !important;
     }}
     
+    /* Sidebar headers */
+    [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3,
+    [data-testid="stSidebar"] .stMarkdown h2,
+    [data-testid="stSidebar"] .stMarkdown h3 {{
+        color: {HONEY} !important;
+        font-weight: bold !important;
+        margin-top: 15px !important;
+        margin-bottom: 10px !important;
+    }}
+    
+    /* Sidebar info boxes */
     [data-testid="stSidebar"] .stAlert {{
-        background-color: {DARK_BROWN};
-        border-left-color: {HONEY};
+        background-color: {DARK_BROWN} !important;
+        border-left-color: {HONEY} !important;
+        color: {CREAM} !important;
+    }}
+    
+    /* Sidebar divider */
+    [data-testid="stSidebar"] hr {{
+        border-color: {LATTE} !important;
+        margin: 15px 0 !important;
+    }}
+    
+    /* Sidebar slider and checkbox labels */
+    [data-testid="stSidebar"] .stSlider label,
+    [data-testid="stSidebar"] .stCheckbox label {{
+        color: {CREAM} !important;
+    }}
+    
+    /* Sidebar caption */
+    [data-testid="stSidebar"] .stCaption,
+    [data-testid="stSidebar"] caption {{
+        color: {LATTE} !important;
     }}
     
     .stTextInput input {{
@@ -444,12 +483,21 @@ st.markdown(
 
 # Sidebar
 with st.sidebar:
-    st.caption("Made with ❤️ by Emmanuella Uwudia")
-    st.caption("Index:10012200008 | CS4241 - Introduction to AI")
-
-    st.markdown("## What's on the menu?")
-    st.info("**Election Results**\n\nHistorical voting data from past Ghana elections")
-    st.info("**2025 Budget**\n\nOfficial government budget document")
+    # Sidebar header with better contrast
+    st.markdown(
+        f"""
+        <div style="text-align: center; margin-bottom: 20px; padding: 10px; background-color: {DARK_BROWN}; border-radius: 12px;">
+            <div style="font-size: 2rem;">☕</div>
+            <div style="font-weight: bold; color: {HONEY}; font-size: 1.1rem;">Brew & Ask</div>
+            <div style="font-size: 0.7rem; color: {LATTE};">RAG Chatbot</div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    
+    st.markdown("## 📚 What's on the menu?")
+    st.info("**📊 Election Results**\n\nHistorical voting data from past Ghana elections")
+    st.info("**📄 2025 Budget**\n\nOfficial government budget document")
     
     st.markdown("---")
     st.markdown("## ⚙️ Settings")
@@ -470,6 +518,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("## 📝 Feedback")
     
+    # View Statistics button - Styled button
     if st.button("📊 View Statistics", key="view_stats", use_container_width=True):
         stats = st.session_state.feedback_loop.get_statistics()
         
@@ -540,6 +589,19 @@ with st.sidebar:
                 unsafe_allow_html=True
             )
     
+    st.markdown("---")
+    
+    # Footer with better contrast
+    st.markdown(
+        f"""
+        <div style="text-align: center; padding: 10px 0; border-top: 1px solid {LATTE}; margin-top: 10px;">
+            <div style="color: {HONEY}; font-weight: bold;">Made with ❤️ by Emmanuella Uwudia</div>
+            <div style="color: {LATTE}; font-size: 0.7rem;">Index: 10012200008 | CS4241 - Introduction to AI</div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
 # Chat area
 chat_container = st.container()
 
