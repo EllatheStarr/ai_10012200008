@@ -73,7 +73,6 @@ WHITE = "#FFFFFF"
 st.markdown(
     f"""
     <style>
-    /* Main background - warm cream */
     .main {{
         background-color: {CREAM};
     }}
@@ -82,7 +81,6 @@ st.markdown(
         background-color: {CREAM};
     }}
     
-    /* Header - coffee shop sign style */
     .coffee-header {{
         background: linear-gradient(135deg, {COFFEE_BROWN} 0%, {DARK_BROWN} 100%);
         padding: 1.5rem;
@@ -107,7 +105,6 @@ st.markdown(
         font-size: 1rem;
     }}
     
-    /* User message - warm and friendly */
     .user-message {{
         background: linear-gradient(135deg, {TERRACOTTA} 0%, {HONEY} 100%);
         color: {WHITE};
@@ -121,7 +118,6 @@ st.markdown(
         font-weight: 500;
     }}
     
-    /* Bot message - like a coffee chat */
     .bot-message {{
         background-color: {WHITE};
         color: {DARK_BROWN};
@@ -136,7 +132,6 @@ st.markdown(
         line-height: 1.5;
     }}
     
-    /* Source card - like a receipt/note */
     .source-card {{
         background-color: {WHITE};
         border-left: 4px solid {TERRACOTTA};
@@ -147,7 +142,6 @@ st.markdown(
         font-size: 0.85rem;
     }}
     
-    /* Score badges - friendly colors */
     .score-high {{ 
         background-color: #D4E6D4;
         color: #2E7D32;
@@ -172,7 +166,6 @@ st.markdown(
         font-weight: bold;
     }}
     
-    /* Button styling - like coffee shop buttons */
     .stButton > button {{
         background-color: {COFFEE_BROWN};
         color: {WHITE};
@@ -189,9 +182,7 @@ st.markdown(
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }}
-
     
-    /* View Statistics button styling */
     .stButton button[key="view_stats"] {{
         background-color: {COFFEE_BROWN} !important;
         color: {WHITE} !important;
@@ -200,10 +191,7 @@ st.markdown(
         font-weight: bold !important;
         padding: 0.6rem 1.2rem !important;
         width: 100% !important;
-        cursor: pointer !important;
-        transition: all 0.3s ease !important;
     }}
-    
     
     .stButton button[key="view_stats"]:hover {{
         background-color: {TERRACOTTA} !important;
@@ -211,55 +199,51 @@ st.markdown(
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }}
     
-    /* Sidebar styling */
     [data-testid="stSidebar"] {{
         background-color: {COFFEE_BROWN};
     }}
     
-    /* Make all sidebar text white/cream */
-    [data-testid="stSidebar"] .stMarkdown,
-    [data-testid="stSidebar"] p,
-    [data-testid="stSidebar"] div:not(.stAlert) {{
-        color: {CREAM} !important;
+    [data-testid="stSidebar"] * {{
+        color: {CREAM};
     }}
-    
-    /* Make sidebar headers gold and visible */
+
     [data-testid="stSidebar"] .stMarkdown h2,
     [data-testid="stSidebar"] .stMarkdown h3,
-    [data-testid="stSidebar"] h2,
-    [data-testid="stSidebar"] h3 {{
-        color: {HONEY} !important;
-        font-weight: bold !important;
-        font-size: 1.1rem !important;
-        margin-top: 15px !important;
-        margin-bottom: 10px !important;
-        display: block !important;
-        visibility: visible !important;
-    }}
-    
-    /* Fix info boxes in sidebar */
-    [data-testid="stSidebar"] .stAlert {{
-        background-color: {DARK_BROWN} !important;
-        border-left: 3px solid {HONEY} !important;
-        color: {CREAM} !important;
-    }}
-    
-    /* Make slider and checkbox labels white */
-    [data-testid="stSidebar"] .stSlider label,
-    [data-testid="stSidebar"] .stCheckbox label {{
-        color: {CREAM} !important;
-    }}
-    
-    /* Make sidebar divider visible */
-    [data-testid="stSidebar"] hr {{
-        border-color: {LATTE} !important;
-        margin: 15px 0 !important;
-    }}
-    
-    /* Make sidebar caption/footer visible */
+    [data-testid="stSidebar"] .stMarkdown h4,
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] li,
+    [data-testid="stSidebar"] label,
     [data-testid="stSidebar"] .stCaption,
-    [data-testid="stSidebar"] caption {{
-        color: {LATTE} !important;
+    [data-testid="stSidebar"] [data-testid="stCaptionContainer"] {{
+        color: {CREAM} !important;
+        opacity: 1 !important;
+    }}
+
+    [data-testid="stSidebar"] [data-testid="stCaptionContainer"] p {{
+        color: {WHITE} !important;
+        font-weight: 600;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    }}
+
+    [data-testid="stSidebar"] .stButton > button {{
+        background-color: {COFFEE_BROWN} !important;
+        color: {WHITE} !important;
+        border: 2px solid {HONEY} !important;
+        border-radius: 12px !important;
+        font-weight: 700 !important;
+        min-height: 44px !important;
+        width: 100% !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }}
+
+    [data-testid="stSidebar"] .stButton > button:hover {{
+        background-color: {TERRACOTTA} !important;
+        border-color: {HONEY} !important;
+    }}
+    
+    [data-testid="stSidebar"] .stAlert {{
+        background-color: {DARK_BROWN};
+        border-left-color: {HONEY};
     }}
     
     .stTextInput input {{
@@ -361,7 +345,6 @@ st.markdown(
         margin: 5px 0;
     }}
     
-    /* Mobile Responsive Fixes */
     @media (max-width: 768px) {{
         .coffee-header {{
             padding: 0.8rem !important;
@@ -376,14 +359,33 @@ st.markdown(
             font-size: 0.7rem !important;
         }}
         
-        .stMarkdown h2, 
-        .stMarkdown h3, 
+        .stMarkdown h2,
+        .stMarkdown h3,
         .stMarkdown h4 {{
             color: {COFFEE_BROWN} !important;
             font-weight: bold !important;
             display: block !important;
             visibility: visible !important;
             opacity: 1 !important;
+        }}
+
+        [data-testid="stSidebar"] .stMarkdown h2,
+        [data-testid="stSidebar"] .stMarkdown h3,
+        [data-testid="stSidebar"] .stMarkdown h4,
+        [data-testid="stSidebar"] .stMarkdown p,
+        [data-testid="stSidebar"] .stMarkdown li,
+        [data-testid="stSidebar"] .stCaption,
+        [data-testid="stSidebar"] [data-testid="stCaptionContainer"] p {{
+            color: {CREAM} !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }}
+
+        [data-testid="stSidebar"] [data-testid="stCaptionContainer"] p {{
+            color: {WHITE} !important;
+            font-size: 0.85rem !important;
+            line-height: 1.35 !important;
+            letter-spacing: 0.1px;
         }}
         
         .stMarkdown, 
@@ -399,6 +401,14 @@ st.markdown(
             word-wrap: break-word !important;
             height: auto !important;
             min-height: 40px !important;
+        }}
+
+        [data-testid="stSidebar"] .stButton > button {{
+            font-size: 0.9rem !important;
+            padding: 0.55rem 0.8rem !important;
+            min-height: 44px !important;
+            border: 2px solid {HONEY} !important;
+            border-radius: 12px !important;
         }}
         
         [data-testid="stSidebar"] {{
@@ -430,6 +440,12 @@ st.markdown(
         .stButton > button {{
             font-size: 0.6rem !important;
             padding: 0.2rem 0.3rem !important;
+        }}
+
+        [data-testid="stSidebar"] .stButton > button {{
+            font-size: 0.85rem !important;
+            padding: 0.5rem 0.7rem !important;
+            min-height: 42px !important;
         }}
         
         .user-message, .bot-message {{
@@ -495,22 +511,22 @@ st.markdown(
 
 # Sidebar
 with st.sidebar:
-    st.markdown("### ☕ Brew & Ask")
-    st.markdown("---")
-    
-    st.markdown("### 📚 What's on the menu?")
-    st.info("📊 **Election Results**\n\nHistorical voting data from past Ghana elections")
-    st.info("📄 **2025 Budget**\n\nOfficial government budget document")
-    
-    st.markdown("---")
-    st.markdown("### ⚙️ Settings")
-    
-    k_value = st.slider("Sources to check", 3, 10, 5)
-    use_expansion = st.checkbox("Smart Search", value=True)
-    show_debug = st.checkbox("Show my work", value=True)
+    st.caption("Made with ❤️ by Emmanuella Uwudia")
+    st.caption("Index:10012200008 | CS4241 - Introduction to AI")
+
+    st.markdown("## What's on the menu?")
+    st.info("**Election Results**\n\nHistorical voting data from past Ghana elections")
+    st.info("**2025 Budget**\n\nOfficial government budget document")
     
     st.markdown("---")
-    st.markdown("### 🛠️ Behind the counter")
+    st.markdown("## ⚙️ Settings")
+    
+    k_value = st.slider("How many sources to check?", 3, 10, 5)
+    use_expansion = st.checkbox("🔍 Smart Search", value=True)
+    show_debug = st.checkbox("📋 Show my work", value=True)
+    
+    st.markdown("---")
+    st.markdown("## 🛠️ Behind the counter")
     st.markdown("""
     - Custom RAG engine
     - Smart search
@@ -519,9 +535,8 @@ with st.sidebar:
     """)
     
     st.markdown("---")
-    st.markdown("### 📝 Feedback")
+    st.markdown("## 📝 Feedback")
     
-    # View Statistics button
     if st.button("📊 View Statistics", key="view_stats", use_container_width=True):
         stats = st.session_state.feedback_loop.get_statistics()
         
@@ -592,19 +607,6 @@ with st.sidebar:
                 unsafe_allow_html=True
             )
     
-    st.markdown("---")
-    
-    # Footer
-    st.markdown(
-        f"""
-        <div style="text-align: center; padding: 10px 0; border-top: 1px solid {LATTE}; margin-top: 10px;">
-            <div style="color: {HONEY}; font-weight: bold;">Made with ❤️ by Emmanuella Uwudia</div>
-            <div style="color: {LATTE}; font-size: 0.7rem;">Index: 10012200008 | CS4241 - Introduction to AI</div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
 # Chat area
 chat_container = st.container()
 
