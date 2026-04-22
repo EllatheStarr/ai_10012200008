@@ -1,7 +1,7 @@
 """
 File: app.py
 Author: Emmanuella Uwudia
-Index Number: AI_20240001
+Index Number: AI_10012200008
 Course: CS4241 - Introduction to Artificial Intelligence
 Purpose: Streamlit UI for Brew & Ask - Warm Coffee Shop Theme
 """
@@ -16,6 +16,41 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.rag_pipeline import GhanaRAGPipeline
 from src.innovation_feedback import GhanaFeedbackLoop
+
+# ============================================
+# CHECK AND REBUILD VECTOR INDEX IF MISSING
+# ============================================
+def check_and_rebuild_index():
+    """Check if vector index files exist, rebuild if missing."""
+    index_path = "data/vectors/faiss_index.bin"
+    metadata_path = "data/vectors/chunk_metadata.json"
+    
+    if not os.path.exists(index_path) or not os.path.exists(metadata_path):
+        st.warning("🔨 Vector index not found. Building it now (this may take 2-3 minutes)...")
+        
+        with st.status("Building vector index for cloud deployment...", expanded=True) as status:
+            status.update(label="Step 1/4: Cleaning and processing data...")
+            import subprocess
+            subprocess.run(["python", "src/data_cleaning.py"], capture_output=True)
+            
+            status.update(label="Step 2/4: Creating chunks...")
+            subprocess.run(["python", "src/chunking.py"], capture_output=True)
+            
+            status.update(label="Step 3/4: Generating embeddings...")
+            subprocess.run(["python", "src/embeddings.py"], capture_output=True)
+            
+            status.update(label="Step 4/4: Building FAISS index...")
+            subprocess.run(["python", "src/vector_store.py"], capture_output=True)
+            
+            status.update(label="✅ Index built successfully!", state="complete")
+        
+        st.success("✅ Vector index is ready! You can now ask questions.")
+        return True
+    return False
+
+# Run the check before initializing the app
+check_and_rebuild_index()
+# ============================================
 
 # Page configuration
 st.set_page_config(
