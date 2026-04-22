@@ -3,7 +3,7 @@ File: app.py
 Author: Emmanuella Uwudia
 Index Number: AI_10012200008
 Course: CS4241 - Introduction to Artificial Intelligence
-Purpose: Streamlit UI for Brew & Ask - Warm Coffee Shop Theme
+Purpose: Streamlit UI for Brew & Ask - Warm Coffee Shop Theme (Mobile Responsive)
 """
 
 import streamlit as st
@@ -61,18 +61,18 @@ st.set_page_config(
 )
 
 # Warm Coffee Shop Colors
-CREAM = "#FFF8E7"          # Warm cream background
-COFFEE_BROWN = "#6F4E37"   # Rich coffee brown
-LATTE = "#C4A484"          # Soft latte
-TERRACOTTA = "#E2725B"     # Warm terracotta accent
-HONEY = "#F0A500"          # Honey yellow
-DARK_BROWN = "#3E2723"     # Dark coffee for text
+CREAM = "#FFF8E7"
+COFFEE_BROWN = "#6F4E37"
+LATTE = "#C4A484"
+TERRACOTTA = "#E2725B"
+HONEY = "#F0A500"
+DARK_BROWN = "#3E2723"
 WHITE = "#FFFFFF"
 
-# Custom CSS for Coffee Shop Theme
-st.markdown(f"""
-<style>
-    /* Main background - warm cream */
+# Custom CSS for Coffee Shop Theme with Mobile Responsive Fixes
+st.markdown(
+    f"""
+    <style>
     .main {{
         background-color: {CREAM};
     }}
@@ -81,7 +81,6 @@ st.markdown(f"""
         background-color: {CREAM};
     }}
     
-    /* Header - coffee shop sign style */
     .coffee-header {{
         background: linear-gradient(135deg, {COFFEE_BROWN} 0%, {DARK_BROWN} 100%);
         padding: 1.5rem;
@@ -106,7 +105,6 @@ st.markdown(f"""
         font-size: 1rem;
     }}
     
-    /* User message - warm and friendly */
     .user-message {{
         background: linear-gradient(135deg, {TERRACOTTA} 0%, {HONEY} 100%);
         color: {WHITE};
@@ -120,7 +118,6 @@ st.markdown(f"""
         font-weight: 500;
     }}
     
-    /* Bot message - like a coffee chat */
     .bot-message {{
         background-color: {WHITE};
         color: {DARK_BROWN};
@@ -135,7 +132,6 @@ st.markdown(f"""
         line-height: 1.5;
     }}
     
-    /* Source card - like a receipt/note */
     .source-card {{
         background-color: {WHITE};
         border-left: 4px solid {TERRACOTTA};
@@ -146,7 +142,6 @@ st.markdown(f"""
         font-size: 0.85rem;
     }}
     
-    /* Score badges - friendly colors */
     .score-high {{ 
         background-color: #D4E6D4;
         color: #2E7D32;
@@ -154,6 +149,7 @@ st.markdown(f"""
         border-radius: 20px;
         font-weight: bold;
     }}
+    
     .score-medium {{ 
         background-color: #FFF3E0;
         color: #E65100;
@@ -161,6 +157,7 @@ st.markdown(f"""
         border-radius: 20px;
         font-weight: bold;
     }}
+    
     .score-low {{ 
         background-color: #FFEBEE;
         color: #CE1126;
@@ -169,7 +166,6 @@ st.markdown(f"""
         font-weight: bold;
     }}
     
-    /* Button styling - like coffee shop buttons */
     .stButton > button {{
         background-color: {COFFEE_BROWN};
         color: {WHITE};
@@ -187,7 +183,6 @@ st.markdown(f"""
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }}
     
-    /* View Stats button specific styling */
     .stButton button[key="view_stats"] {{
         background-color: {COFFEE_BROWN} !important;
         color: {WHITE} !important;
@@ -204,7 +199,6 @@ st.markdown(f"""
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }}
     
-    /* Sidebar - like a coffee shop menu board */
     [data-testid="stSidebar"] {{
         background-color: {COFFEE_BROWN};
     }}
@@ -218,7 +212,6 @@ st.markdown(f"""
         border-left-color: {HONEY};
     }}
     
-    /* Input field - like writing an order */
     .stTextInput input {{
         background-color: {WHITE};
         color: {DARK_BROWN};
@@ -235,17 +228,14 @@ st.markdown(f"""
         outline: none;
     }}
     
-    /* Slider */
     [data-testid="stSlider"] {{
         color: {HONEY};
     }}
     
-    /* Checkbox */
     .stCheckbox label {{
         color: {CREAM};
     }}
     
-    /* Info boxes */
     .stAlert {{
         background-color: {DARK_BROWN};
         border-left-color: {HONEY};
@@ -253,19 +243,16 @@ st.markdown(f"""
         border-radius: 12px;
     }}
     
-    /* Headers */
     h1, h2, h3, h4 {{
         color: {COFFEE_BROWN};
         font-weight: 600;
     }}
     
-    /* Divider */
     hr {{
         border-color: {LATTE};
         margin: 20px 0;
     }}
     
-    /* Stats container styling */
     .stats-container {{
         background-color: {WHITE};
         border: 2px solid {COFFEE_BROWN};
@@ -323,15 +310,95 @@ st.markdown(f"""
         padding: 8px;
         margin: 5px 0;
     }}
-</style>
-""", unsafe_allow_html=True)
+    
+    @media (max-width: 768px) {{
+        .coffee-header {{
+            padding: 0.8rem !important;
+            margin-bottom: 1rem !important;
+        }}
+        
+        .coffee-header h1 {{
+            font-size: 1.5rem !important;
+        }}
+        
+        .coffee-header p {{
+            font-size: 0.7rem !important;
+        }}
+        
+        .stMarkdown h2, 
+        .stMarkdown h3, 
+        .stMarkdown h4 {{
+            color: {COFFEE_BROWN} !important;
+            font-weight: bold !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }}
+        
+        .stMarkdown, 
+        .stMarkdown p, 
+        .stMarkdown li {{
+            color: {DARK_BROWN} !important;
+        }}
+        
+        .stButton > button {{
+            font-size: 0.7rem !important;
+            padding: 0.3rem 0.5rem !important;
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            height: auto !important;
+            min-height: 40px !important;
+        }}
+        
+        [data-testid="stSidebar"] {{
+            width: 280px !important;
+        }}
+        
+        .memory-status {{
+            display: block !important;
+            margin: 10px 0 !important;
+            padding: 10px !important;
+        }}
+        
+        .user-message, .bot-message {{
+            max-width: 85% !important;
+            font-size: 0.85rem !important;
+        }}
+        
+        .source-card {{
+            font-size: 0.7rem !important;
+        }}
+        
+        .footer {{
+            font-size: 0.6rem !important;
+            padding: 10px !important;
+        }}
+    }}
+    
+    @media (max-width: 480px) {{
+        .stButton > button {{
+            font-size: 0.6rem !important;
+            padding: 0.2rem 0.3rem !important;
+        }}
+        
+        .user-message, .bot-message {{
+            max-width: 90% !important;
+            font-size: 0.8rem !important;
+        }}
+        
+        h3 {{
+            font-size: 1rem !important;
+        }}
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 def has_relevant_context(chunks, min_score: float = 0.25):
-    """Return True when at least one retrieved chunk has acceptable relevance."""
     return any(c.get("similarity_score", 0) >= min_score for c in chunks)
 
 def is_no_answer_response(response_text: str):
-    """Detect fallback responses where sources should not be shown."""
     response_lower = response_text.lower()
     indicators = [
         "couldn't find", "cannot answer", "only have information",
@@ -340,14 +407,11 @@ def is_no_answer_response(response_text: str):
     return any(ind in response_lower for ind in indicators)
 
 def remove_source_number_tags(response_text: str):
-    """Remove model artifacts like '(Source 1)' or 'Source 2' from responses."""
     cleaned = re.sub(r"\s*\(\s*source\s*\d+\s*\)", "", response_text, flags=re.IGNORECASE)
     cleaned = re.sub(r"\s*source\s*\d+\b", "", cleaned, flags=re.IGNORECASE)
     return cleaned
 
-
 def set_search_input(question: str):
-    """Prefill the search box from a quick-question button click."""
     st.session_state["input"] = question
 
 # Initialize session state
@@ -368,12 +432,15 @@ if "last_feedback_id" not in st.session_state:
     st.session_state.last_feedback_id = None
 
 # Header
-st.markdown(f"""
-<div class="coffee-header">
-    <h1>☕ Brew & Ask</h1>
-    <p>Your friendly Ghana Elections & Budget Assistant</p>
-</div>
-""", unsafe_allow_html=True)
+st.markdown(
+    f"""
+    <div class="coffee-header">
+        <h1>☕ Brew & Ask</h1>
+        <p>Your friendly Ghana Elections & Budget Assistant</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 # Sidebar
 with st.sidebar:
@@ -403,65 +470,75 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("## 📝 Feedback")
     
-    # View stats button with styled container
     if st.button("📊 View Statistics", key="view_stats", use_container_width=True):
         stats = st.session_state.feedback_loop.get_statistics()
         
         if stats and stats.get("total_feedback", 0) > 0:
-            st.markdown(f"""
-            <div class="stats-container">
-                <div class="stats-title">📊 Feedback Statistics</div>
-                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                    <div class="stats-metric" style="flex: 1;">
-                        <div class="stats-number">{stats.get("total_feedback", 0)}</div>
-                        <div class="stats-label">Total Ratings</div>
+            st.markdown(
+                f"""
+                <div class="stats-container">
+                    <div class="stats-title">📊 Feedback Statistics</div>
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                        <div class="stats-metric" style="flex: 1;">
+                            <div class="stats-number">{stats.get("total_feedback", 0)}</div>
+                            <div class="stats-label">Total Ratings</div>
+                        </div>
+                        <div class="stats-metric" style="flex: 1;">
+                            <div class="stats-number">{stats.get("average_rating", 0):.1f}</div>
+                            <div class="stats-label">⭐ Average Rating</div>
+                        </div>
+                        <div class="stats-metric" style="flex: 1;">
+                            <div class="stats-number">{stats.get("total_positive", 0)}</div>
+                            <div class="stats-label">👍 Positive</div>
+                        </div>
                     </div>
-                    <div class="stats-metric" style="flex: 1;">
-                        <div class="stats-number">{stats.get("average_rating", 0):.1f}</div>
-                        <div class="stats-label">⭐ Average Rating</div>
-                    </div>
-                    <div class="stats-metric" style="flex: 1;">
-                        <div class="stats-number">{stats.get("total_positive", 0)}</div>
-                        <div class="stats-label">👍 Positive</div>
-                    </div>
+                    <div class="stats-title" style="font-size: 0.9rem;">Rating Breakdown</div>
                 </div>
-                <div class="stats-title" style="font-size: 0.9rem;">Rating Breakdown</div>
-            """, unsafe_allow_html=True)
+                """,
+                unsafe_allow_html=True
+            )
             
-            # Count ratings from feedback data
             rating_counts = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
             for fb in st.session_state.feedback_loop.feedback_data:
                 r = fb.get("rating", 0)
                 if r in rating_counts:
                     rating_counts[r] += 1
             
-            # Display rating bars
             for r in [5, 4, 3, 2, 1]:
                 count = rating_counts.get(r, 0)
                 if count > 0:
                     emoji = "😍" if r == 5 else "🙂" if r == 4 else "😐" if r == 3 else "😕" if r == 2 else "😞"
                     bar_width = min(100, (count / max(1, stats.get("total_feedback", 1))) * 100)
-                    st.markdown(f"""
-                    <div class="rating-bar">
-                        <div style="display: flex; justify-content: space-between;">
-                            <span>{emoji} {r} star</span>
-                            <span>{count} votes</span>
+                    st.markdown(
+                        f"""
+                        <div class="rating-bar">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>{emoji} {r} star</span>
+                                <span>{count} votes</span>
+                            </div>
+                            <div style="background-color: #E0E0E0; border-radius: 10px; height: 8px; margin-top: 5px;">
+                                <div style="background-color: {TERRACOTTA}; width: {bar_width}%; height: 8px; border-radius: 10px;"></div>
+                            </div>
                         </div>
-                        <div style="background-color: #E0E0E0; border-radius: 10px; height: 8px; margin-top: 5px;">
-                            <div style="background-color: {TERRACOTTA}; width: {bar_width}%; height: 8px; border-radius: 10px;"></div>
-                        </div>
-                    </div>
-                    """, unsafe_allow_html=True)
+                        """,
+                        unsafe_allow_html=True
+                    )
             
-            st.markdown(f'<div style="font-size: 0.7rem; color: #999; text-align: center; margin-top: 10px;">Keep rating to improve responses! ☕</div></div>', unsafe_allow_html=True)
+            st.markdown(
+                f'<div style="font-size: 0.7rem; color: #999; text-align: center; margin-top: 10px;">Keep rating to improve responses! ☕</div></div>',
+                unsafe_allow_html=True
+            )
         else:
-            st.markdown(f"""
-            <div class="stats-container" style="text-align: center;">
-                <div style="font-size: 2rem;">☕</div>
-                <div style="color: {DARK_BROWN}; font-weight: bold;">No feedback yet!</div>
-                <div style="font-size: 0.8rem; color: #666;">Ask a question and rate the response.</div>
-            </div>
-            """, unsafe_allow_html=True)
+            st.markdown(
+                f"""
+                <div class="stats-container" style="text-align: center;">
+                    <div style="font-size: 2rem;">☕</div>
+                    <div style="color: {DARK_BROWN}; font-weight: bold;">No feedback yet!</div>
+                    <div style="font-size: 0.8rem; color: #666;">Ask a question and rate the response.</div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
     
 # Chat area
 chat_container = st.container()
@@ -478,16 +555,35 @@ st.markdown("---")
 col1, col2 = st.columns([6, 1])
 
 with col1:
-    user_input = st.text_input("Ask me anything about Ghana's elections or budget...", key="input", placeholder="e.g., What was the healthcare budget for 2025?", label_visibility="collapsed")
+    user_input = st.text_input(
+        "Ask me anything about Ghana's elections or budget...",
+        key="input",
+        placeholder="e.g., What was the healthcare budget for 2025?",
+        label_visibility="collapsed"
+    )
 
 with col2:
     send_button = st.button("☕ Ask", use_container_width=True)
 
-# Sample questions - Balanced between elections and budget
-st.markdown("### 🔍 Try asking me...")
+# Sample questions - Mobile-friendly
+st.markdown(
+    """
+    <div style="margin: 15px 0;">
+        <h3 style="color: #6F4E37; margin-bottom: 10px;">🔍 Try asking me...</h3>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
-# Create two rows for better organization
-st.markdown("**Election Questions:**")
+st.markdown(
+    """
+    <div style="font-weight: bold; color: #6F4E37; margin: 10px 0 5px 0;">
+        🗳️ Election Questions:
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 election_cols = st.columns(3)
 election_questions = [
     "Show me all election results for Edward Mahama",
@@ -504,7 +600,15 @@ for idx, (col, q) in enumerate(zip(election_cols, election_questions)):
         args=(q,)
     )
 
-st.markdown("**Budget Questions:**")
+st.markdown(
+    """
+    <div style="font-weight: bold; color: #6F4E37; margin: 15px 0 5px 0;">
+        📊 Budget Questions:
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 budget_cols = st.columns(3)
 budget_questions = [
     "What does the budget say about healthcare?",
@@ -523,13 +627,9 @@ for idx, (col, q) in enumerate(zip(budget_cols, budget_questions)):
 
 # Process input
 if send_button and user_input:
-    # Reset feedback tracking for new question
     st.session_state.last_feedback_id = None
-    
-    # Add user message
     st.session_state.messages.append({"role": "user", "content": user_input})
     
-    # Process through pipeline
     with st.spinner("☕ Brewing your answer..."):
         result = st.session_state.pipeline.process_query(
             query=user_input,
@@ -538,27 +638,22 @@ if send_button and user_input:
         )
         st.session_state.last_response = result
     
-    # Format response
     response_text = result["response"]
     response_text = remove_source_number_tags(response_text)
     retrieved_chunks = result.get("retrieved_chunks", [])
     
-    # Check if this is a valid answer
     has_good_chunks = has_relevant_context(retrieved_chunks, min_score=0.25)
     is_fallback = is_no_answer_response(response_text)
     can_show_sources = has_good_chunks and not is_fallback
     
-    # If no good answer found, provide helpful message
     if not can_show_sources and not is_fallback:
         response_text = "☕ **Hmm, I couldn't quite find that in my knowledge base.**\n\nTry rephrasing with specific details like year, region, or ministry name. I'm here to help!"
     
-    # Add debug source info with enhanced score display
     if show_debug and can_show_sources and retrieved_chunks:
         debug_section = "\n\n---\n**📌 Here's where I found that information:**\n"
         for chunk in retrieved_chunks[:3]:
             score = chunk.get("similarity_score", 0)
             
-            # Determine score badge and icon
             if score >= 0.7:
                 score_badge = "High confidence"
                 score_icon = "🟢"
@@ -569,27 +664,20 @@ if send_button and user_input:
                 score_badge = "Low confidence"
                 score_icon = "🔴"
             
-            # Get source name
             source_name = chunk.get('source', 'Unknown')
-            
-            # Get text preview (first 200 chars for more context)
             text_preview = chunk.get('text', '')[:200]
             if len(chunk.get('text', '')) > 200:
                 text_preview += "..."
             
-            # Format the source entry
             debug_section += f"\n• **{source_name}** | {score_icon} {score_badge} (Score: {score:.3f})\n  {text_preview}\n"
         
         response_text += debug_section
     
-    # Add assistant message
     st.session_state.messages.append({"role": "assistant", "content": response_text})
-    
     st.rerun()
 
-# Feedback collection - appears after each response
+# Feedback collection
 if st.session_state.last_response is not None:
-    # Check if feedback hasn't been given for this response
     current_response_id = id(st.session_state.last_response)
     if st.session_state.get("last_feedback_id") != current_response_id:
         st.markdown("---")
@@ -657,15 +745,22 @@ if st.session_state.last_response is not None:
                 st.success("☕ Thanks for the feedback! (5/5)")
                 st.rerun()
 
-# INNOVATION: Clear conversation memory button
+# INNOVATION: Conversation Memory - Mobile-friendly
 st.markdown("---")
-st.markdown("## 💡 Conversation Memory")
-st.markdown("""
-I remember our conversation! Ask follow-up questions like:
-- "What about education?"
-- "How does that compare?"
-- "Tell me more about that"
-""")
+st.markdown(
+    """
+    <div style="background-color: #FFF8E7; padding: 15px; border-radius: 12px; border-left: 5px solid #F0A500; margin: 10px 0;">
+        <h3 style="margin: 0 0 10px 0; color: #6F4E37;">💡 Conversation Memory</h3>
+        <p style="margin: 0 0 8px 0; color: #3E2723;">I remember our conversation! Ask follow-up questions like:</p>
+        <ul style="margin: 0; padding-left: 20px; color: #3E2723;">
+            <li>"What about education?"</li>
+            <li>"How does that compare?"</li>
+            <li>"Tell me more about that"</li>
+        </ul>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 if st.button("🧹 Clear Conversation History", key="clear_memory", use_container_width=True):
     st.session_state.pipeline.clear_conversation_memory()
