@@ -97,14 +97,37 @@ class GhanaVectorStore:
         """
         Load FAISS index and chunk metadata
         """
-        index_path = f"{output_dir}/faiss_index.bin"
-        metadata_path = f"{output_dir}/chunk_metadata.json"
+        index_path = os.path.join(output_dir, "faiss_index.bin")
+        metadata_path = os.path.join(output_dir, "chunk_metadata.json")
+        embeddings_path = os.path.join(output_dir, "embeddings.npy")
         
         if os.path.exists(index_path):
             self.index = faiss.read_index(index_path)
             print(f"✅ Loaded FAISS index with {self.index.ntotal} vectors")
         else:
-            raise FileNotFoundError(f"Index not found at {index_path}")
+            # Deployment-safe fallback: rebuild index if embeddings + metadata are available.
+            if os.path.exists(embeddings_path) and os.path.exists(metadata_path):
+                print(f"⚠️ Index not found at {index_path}. Rebuilding from saved embeddings...")
+
+                with open(metadata_path, "r") as f:
+                    metadata = json.load(f)
+
+                chunks = metadata.get("chunks", [])
+                embeddings = np.load(embeddings_path).astype("float32")
+
+                if embeddings.ndim != 2 or embeddings.shape[1] != self.embedding_dimension:
+                    raise ValueError(
+                        f"Embeddings shape {embeddings.shape} does not match expected dimension {self.embedding_dimension}."
+                    )
+
+                self.build_index(embeddings, chunks)
+                self.save_index(output_dir)
+                print("✅ Rebuilt and saved FAISS index successfully")
+            else:
+                raise FileNotFoundError(
+                    f"Index not found at {index_path} and fallback files are missing. "
+                    f"Expected {embeddings_path} and {metadata_path}."
+                )
         
         if os.path.exists(metadata_path):
             with open(metadata_path, "r") as f:
