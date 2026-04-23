@@ -181,10 +181,10 @@ The app will open at http://localhost:8501
 
 | Metric | Value |
 |--------|-------|
-| Total lines of code | 3,614 |
+| Total lines of code | 3,833 |
 | Total chunks indexed | 1,909 |
 | Embedding dimension | 384 |
-| FAISS index size | 2.9 MB |
+| FAISS index size | 2.80 MB |
 | Average response time | ~2 seconds |
 | LLM speed | Up to 560 tokens/sec |
 | Chunk size | 500 characters |
