@@ -196,5 +196,7 @@ The app will open at http://localhost:8501
 |------|------|
 | GitHub Repository | [github.com/EllatheStarr/ai_10012200008](https://github.com/EllatheStarr/ai_10012200008) |
 | Deployed Application | [ai-10012200008.streamlit.app](https://ai-10012200008.streamlit.app) |
+| Video Walkthrough | [Demo Video - Brew & Ask RAG Chatbot](https://drive.google.com/file/d/1znICM0Fol16PW3c1pJlRNPZ3f04XvN46/view?usp=drive_link) | 
+
 
 Made with ❤️ by Emmanuella Uwudia
